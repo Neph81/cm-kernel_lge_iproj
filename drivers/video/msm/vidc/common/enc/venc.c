@@ -1023,8 +1023,8 @@ static long vid_enc_ioctl(struct file *file,
 	case VEN_IOCTL_GET_RECON_BUFFER_SIZE:
 	{
 		struct venc_recon_buff_size venc_recon_size;
-		memset((void *)&venc_recon, 0,
-			sizeof(struct venc_recon_addr));
+		memset((void *)&venc_recon_size, 0,
+			sizeof(struct venc_recon_buff_size));
 		if (copy_from_user(&venc_msg, arg, sizeof(venc_msg)))
 			return -EFAULT;
 		DBG("VEN_IOCTL_GET_RECON_BUFFER_SIZE\n");
@@ -1448,7 +1448,7 @@ static long vid_enc_ioctl(struct file *file,
 	{
 		struct ven_profilelevel profile_level;
 		memset((void *)&profile_level, 0,
-			sizeof(struct venc_profilelevel));
+			sizeof(struct ven_profilelevel));
 		if (copy_from_user(&venc_msg, arg, sizeof(venc_msg)))
 			return -EFAULT;
 
@@ -1571,7 +1571,7 @@ static long vid_enc_ioctl(struct file *file,
 	{
 		struct venc_switch encoder_switch;
 		memset((void *)&encoder_switch, 0,
-			sizeof(struct venc_switc));
+			sizeof(struct venc_switch));
 		if (copy_from_user(&venc_msg, arg, sizeof(venc_msg)))
 			return -EFAULT;
 
