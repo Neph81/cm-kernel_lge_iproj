@@ -1490,8 +1490,8 @@ static struct platform_device msm_batt_device = {
 //I Project ION memory setting -  - this is for 1080p video and hdmi display
 #define IPRJ_ION_MEM_SETTING
 
-#define MSM_PMEM_SF_SIZE 0x4000000 /* 64 Mbytes */
-#define MSM_HDMI_PRIM_PMEM_SF_SIZE 0x4000000 /* 64 Mbytes */
+#define MSM_PMEM_SF_SIZE 0x0000000 /* 0 Mbytes */
+#define MSM_HDMI_PRIM_PMEM_SF_SIZE 0x0000000 /* 0 Mbytes */
 
 #ifdef CONFIG_FB_MSM_HDMI_AS_PRIMARY
 unsigned char hdmi_is_primary = 1;
@@ -1528,7 +1528,7 @@ unsigned char hdmi_is_primary;
 
 #ifdef CONFIG_MSM_MULTIMEDIA_USE_ION
 #define MSM_ION_HEAP_NUM	9
-#define MSM_HDMI_PRIM_ION_SF_SIZE MSM_HDMI_PRIM_PMEM_SF_SIZE
+#define MSM_HDMI_PRIM_ION_SF_SIZE 0x4000000 /* 64 Mbytes */
 static unsigned msm_ion_sf_size = MSM_ION_SF_SIZE;
 #else
 #define MSM_ION_HEAP_NUM	1
