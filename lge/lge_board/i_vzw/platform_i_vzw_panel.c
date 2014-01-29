@@ -73,7 +73,7 @@
 #define MSM_FB_SIZE roundup(MSM_FB_PRIM_BUF_SIZE + MSM_FB_EXT_BUF_SIZE+0xFD2000 + \
 				MSM_FB_DSUB_PMEM_ADDER, 4096)
 
-#define MSM_PMEM_SF_SIZE 0x4000000 /* 64 Mbytes */
+#define MSM_PMEM_SF_SIZE 0x0000000 /* 0 Mbytes */
 #define MSM_HDMI_PRIM_PMEM_SF_SIZE 0x4000000 /* 64 Mbytes */
 
 extern unsigned char hdmi_is_primary;
