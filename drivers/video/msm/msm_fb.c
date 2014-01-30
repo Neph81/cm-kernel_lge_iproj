@@ -3569,14 +3569,14 @@ static int msmfb_handle_buf_sync_ioctl(struct msm_fb_data_type *mfd,
 	if (buf_sync->flags & MDP_BUF_SYNC_FLAG_WAIT) {
 		msm_fb_wait_for_fence(mfd);
 	}
-	if	(mfd->panel.type == WRITEBACK_PANEL))
+	if	(mfd->panel.type == WRITEBACK_PANEL)
 		threshold = 1;
 	else
 		threshold = 2;
         release_fen_fd = get_unused_fd_flags(0);
         if (release_fen_fd < 0) {
-          pr_err("%s: get_unused_fd_flags failed", __func__);
-          ret  = -EIO;
+                pr_err("%s: get_unused_fd_flags failed", __func__);
+                ret  = -EIO;
 	}
 
         retire_fen_fd = get_unused_fd_flags(0);
@@ -3587,26 +3587,26 @@ static int msmfb_handle_buf_sync_ioctl(struct msm_fb_data_type *mfd,
 	}
 
         release_sync_pt = sw_sync_pt_create(mfd->timeline,
-             mfd->timeline_value + threshold);
-         release_fence = sync_fence_create("mdp-fence",
-             release_sync_pt);
-         sync_fence_install(release_fence, release_fen_fd);
-         retire_sync_pt = sw_sync_pt_create(mfd->timeline,
-             mfd->timeline_value + threshold +
-             1);
-         retire_fence = sync_fence_create("mdp-retire-fence",
-             retire_sync_pt);
-         sync_fence_install(retire_fence, retire_fen_fd);
+                        mfd->timeline_value + threshold);
+        release_fence = sync_fence_create("mdp-fence",
+                        release_sync_pt);
+        sync_fence_install(release_fence, release_fen_fd);
+        retire_sync_pt = sw_sync_pt_create(mfd->timeline,
+                        mfd->timeline_value + threshold +
+                        1);
+        retire_fence = sync_fence_create("mdp-retire-fence",
+                        retire_sync_pt);
+        sync_fence_install(retire_fence, retire_fen_fd);
 
 	ret = copy_to_user(buf_sync->rel_fen_fd,
-             &release_fen_fd, sizeof(int));
-         if (ret) {
-           pr_err("%s:copy_to_user failed", __func__);
-           goto buf_sync_err_3;
-         }
+        	        &release_fen_fd, sizeof(int));
+        if (ret) {
+                pr_err("%s:copy_to_user failed", __func__);
+                goto buf_sync_err_3;
+        }
 
-         ret = copy_to_user(buf_sync->retire_fen_fd,
-             &retire_fen_fd, sizeof(int));
+        ret = copy_to_user(buf_sync->retire_fen_fd,
+                        &retire_fen_fd, sizeof(int));
 	if (ret) {
 		pr_err("%s:copy_to_user failed", __func__);
 		goto buf_sync_err_3;
