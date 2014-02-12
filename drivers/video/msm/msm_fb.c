@@ -1696,7 +1696,7 @@ static int msm_fb_release(struct fb_info *info, int user)
 	int ret = 0;
 
 #ifdef CONFIG_LGE_I_DISP_BOOTLOGO
-	if(mfd->index == 0 && boot_mode) {
+	if(boot_mode) {
 		boot_mode = 0;
 		return 0;
 	}
