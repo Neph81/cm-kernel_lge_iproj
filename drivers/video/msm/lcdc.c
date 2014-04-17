@@ -228,7 +228,10 @@ static int lcdc_probe(struct platform_device *pdev)
 	 */
 	mfd->panel_info = pdata->panel_info;
 
-	mfd->fb_imgType = MSMFB_DEFAULT_TYPE;
+	if (mfd->index == 0)
+		mfd->fb_imgType = MSMFB_DEFAULT_TYPE;
+	else
+		mfd->fb_imgType = MDP_RGB_565;
 
 	fbi = mfd->fbi;
 	fbi->var.pixclock = clk_round_rate(pixel_mdp_clk,
